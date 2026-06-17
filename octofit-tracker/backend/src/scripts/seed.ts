@@ -2,17 +2,19 @@
  * Seed the octofit_db database with test data
  */
 import mongoose from 'mongoose'
-import User from '../models/user'
-import Team from '../models/team'
-import Activity from '../models/activity'
-import Workout from '../models/workout'
-import Leaderboard from '../models/leaderboard'
+import User from '../models/user.js'
+import Team from '../models/team.js'
+import Activity from '../models/activity.js'
+import Workout from '../models/workout.js'
+import Leaderboard from '../models/leaderboard.js'
 
-const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/octofit_db'
+import connectDatabase, { DEFAULT_MONGO_URL } from '../utils/database.js'
+
+const MONGO_URL = process.env.MONGO_URL || DEFAULT_MONGO_URL
 
 async function run() {
   console.log('Connecting to', MONGO_URL)
-  await mongoose.connect(MONGO_URL)
+  await connectDatabase(MONGO_URL)
 
   console.log('Dropping existing collections (if any)')
   const collections = await mongoose.connection.db.listCollections().toArray()
