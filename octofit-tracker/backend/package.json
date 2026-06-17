@@ -4,10 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev": "ts-node-dev --respawn --transpile-only --esm src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "seed": "ts-node src/scripts/seed.ts"
+    "check-mongo": "npm run build && node dist/scripts/check-mongodb.js",
+    "seed": "npm run check-mongo && npm run build && node dist/scripts/seed.js"
   },
   "dependencies": {
     "express": "^4.18.2",
