@@ -6,9 +6,9 @@ import leaderboardRouter from './routes/leaderboard.js';
 import workoutsRouter from './routes/workouts.js';
 const app = express();
 app.use(express.json());
-import connectDatabase, { DEFAULT_MONGO_URL } from './utils/database.js';
+import connectDatabase, { DEFAULT_MONGO_URL } from './database.js';
 const MONGO_URL = process.env.MONGO_URL || DEFAULT_MONGO_URL;
-connectDatabase(MONGO_URL).catch(err => console.error('MongoDB connection error:', err));
+connectDatabase(MONGO_URL).catch((err) => console.error('MongoDB connection error:', err));
 // Codespaces-aware API URL support
 const PORT = Number(process.env.PORT) || 8000;
 let API_URL = `http://localhost:${PORT}`;

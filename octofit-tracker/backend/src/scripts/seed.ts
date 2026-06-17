@@ -8,7 +8,7 @@ import Activity from '../models/activity.js'
 import Workout from '../models/workout.js'
 import Leaderboard from '../models/leaderboard.js'
 
-import connectDatabase, { DEFAULT_MONGO_URL } from '../utils/database.js'
+import connectDatabase, { DEFAULT_MONGO_URL } from '../database.js'
 
 const MONGO_URL = process.env.MONGO_URL || DEFAULT_MONGO_URL
 
