@@ -1,9 +1,11 @@
 import { Router } from 'express'
+import Leaderboard from '../models/leaderboard.js'
 
 const router = Router()
 
-router.get('/', (req, res) => {
-  res.json({ message: 'Leaderboard (placeholder)' })
+router.get('/', async (req, res) => {
+  const rows = await Leaderboard.find().populate('user').sort({ score: -1 }).limit(100).lean()
+  res.json(rows)
 })
 
 export default router

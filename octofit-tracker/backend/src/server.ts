@@ -9,7 +9,7 @@ import workoutsRouter from './routes/workouts.js'
 const app = express()
 app.use(express.json())
 
-const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/octofit'
+const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/octofit_db'
 mongoose.connect(MONGO_URL)
   .then(() => console.log('MongoDB connected to', MONGO_URL))
   .catch(err => console.error('MongoDB connection error:', err))
